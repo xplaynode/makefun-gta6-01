@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Costa Serena — an open-world crime game</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin:0; padding:0; background:#123; height:100%; overflow:hidden; font-family:system-ui, sans-serif; }
+  #gameCanvas { display:block; width:100vw; height:100vh; }
+  .overlay { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background:linear-gradient(160deg, rgba(255,145,60,.88), rgba(214,48,110,.88) 55%, rgba(27,42,74,.92)); color:#fff; text-align:center; z-index:5; }
+  .overlay h1 { font-size:64px; margin:0 0 4px; letter-spacing:2px; text-shadow:0 4px 0 rgba(0,0,0,.25); }
+  .overlay h2 { font-weight:600; margin:0 0 18px; color:#ffeaa7; }
+  .overlay p { max-width:620px; line-height:1.55; margin:6px 20px; }
+  .overlay button { font-size:22px; font-weight:700; padding:13px 42px; margin-top:18px; border:0; border-radius:30px;
+    background:#ffd23f; color:#5b3b00; cursor:pointer; box-shadow:0 5px 0 #c79a00; }
+  .overlay button:hover { background:#ffe066; }
+  .controls { display:grid; grid-template-columns:auto auto; gap:4px 18px; text-align:left; background:rgba(0,0,0,.28);
+    padding:14px 22px; border-radius:12px; margin-top:10px; font-size:15px; }
+  .hidden { display:none !important; }
+  #endTitle { font-size:56px; }
+</style>
+</head>
+<body>
+<canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+<div id="startScreen" class="overlay">
+  <h1>COSTA SERENA</h1>
+  <h2>An open-world crime story on a sun-soaked coast</h2>
+  <p>You are <b>Lucia Ferrer</b>, back in Costa Serena with empty pockets and one friend who still
+     answers the phone: fixer <b>Marco Delgado</b>. Walk the city, take cars, run Marco's jobs,
+     dodge the Policia de Serena — and make the coast yours.</p>
+  <div class="controls">
+    <span><b>W A S D / Arrows</b></span><span>Walk / drive</span>
+    <span><b>E</b></span><span>Enter / exit a car</span>
+    <span><b>Mouse + Click</b></span><span>Aim and fire on foot</span>
+    <span><b>Shift</b></span><span>Run</span>
+    <span><b>P / Esc</b></span><span>Pause</span>
+  </div>
+  <p id="saveNote"></p>
+  <button id="startButton">▶ &nbsp;Start in Costa Serena</button>
+</div>
+
+<div id="pauseScreen" class="overlay hidden">
+  <h1>PAUSED</h1>
+  <p>Costa Serena waits for no one — except now.</p>
+  <button id="resumeButton">Resume</button>
+</div>
+
+<div id="endScreen" class="overlay hidden">
+  <h1 id="endTitle">BUSTED</h1>
+  <p id="endText">The Policia de Serena got you.</p>
+  <button id="restartButton">Back on the streets</button>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
